@@ -16,6 +16,8 @@ import javax.inject.Inject
 import com.loc.newsapp.domain.usecase.AppEntryUseCases
 import kotlinx.coroutines.launch
 import android.util.Log
+import com.loc.newsapp.presentation.onboadrding.OnBoardingViewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -33,7 +35,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             NewsAppTheme {
                 Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {/// this for theme
-                    OnBoardingScreen()
+                    val viewModel: OnBoardingViewModel = hiltViewModel()
+                    OnBoardingScreen(onEvent = viewModel::onEvent)
                 }
             }
         }
