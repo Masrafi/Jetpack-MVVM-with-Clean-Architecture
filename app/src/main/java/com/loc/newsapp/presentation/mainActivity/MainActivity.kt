@@ -12,10 +12,10 @@ import androidx.compose.foundation.background
 import androidx.core.view.WindowCompat
 import androidx.activity.viewModels
 import com.loc.newsapp.presentation.navgraph.NavGraph
-import kotlinx.coroutines.launch
-import android.util.Log
-import com.loc.newsapp.presentation.onboadrding.OnBoardingViewModel
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.ui.graphics.Color
+import androidx.compose.foundation.isSystemInDarkTheme
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import androidx.compose.runtime.SideEffect
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -28,6 +28,18 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             NewsAppTheme(dynamicColor = false) {
+
+                /// System bar color change
+                val isSystemInDarkMode = isSystemInDarkTheme()
+                val systemUiColor = rememberSystemUiController()
+                SideEffect {
+                    systemUiColor.setSystemBarsColor(
+                        color = Color.Transparent,
+                        darkIcons = !isSystemInDarkMode
+                    )
+                }
+                ///end
+                
                 Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
                     NavGraph(startDestination = viewModel.startDestination.value)
                 }
