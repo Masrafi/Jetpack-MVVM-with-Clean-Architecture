@@ -21,13 +21,15 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.loc.newsapp.feature.onBoarding.presentation.Dimens.MediumPadding1
+import com.loc.newsapp.core.constant.Dimens.MediumPadding1
 import androidx.paging.compose.LazyPagingItems
 import com.loc.newsapp.R
 import com.loc.newsapp.feature.home.domain.entities.Article
 import com.loc.newsapp.feature.home.presentation.widgets.ArticlesList
 import com.loc.newsapp.feature.home.presentation.widgets.SearchBar
-
+//if(articles.isEmpty()){
+//    CircularProgressIndicator()
+//}else {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

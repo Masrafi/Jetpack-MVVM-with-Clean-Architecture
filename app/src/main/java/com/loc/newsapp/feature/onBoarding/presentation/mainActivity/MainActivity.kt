@@ -11,7 +11,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.background
 import androidx.core.view.WindowCompat
 import androidx.activity.viewModels
-import com.loc.newsapp.feature.onBoarding.presentation.navgraph.NavGraph
+import com.loc.newsapp.config.navgraph.NavGraph
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.isSystemInDarkTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController

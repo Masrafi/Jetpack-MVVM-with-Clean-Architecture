@@ -10,8 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.paging.LoadState
 import com.loc.newsapp.feature.home.domain.entities.Article
+import com.loc.newsapp.core.constant.Dimens.MediumPadding1
 import androidx.paging.compose.LazyPagingItems
-import com.loc.newsapp.feature.onBoarding.presentation.Dimens.MediumPadding1
 import com.loc.newsapp.core.util.Dimension.ExtraSmallPadding2
 
 

@@ -1,4 +1,4 @@
-package com.loc.newsapp.feature.onBoarding.presentation
+package com.loc.newsapp.core.constant
 import androidx.compose.ui.unit.dp
 
 object Dimens {
