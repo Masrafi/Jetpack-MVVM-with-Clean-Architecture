@@ -1,4 +1,4 @@
-package com.loc.newsapp.feature.onBoarding.presentation.navgraph
+package com.loc.newsapp.config.navgraph
 
 import androidx.navigation.NamedNavArgument
 

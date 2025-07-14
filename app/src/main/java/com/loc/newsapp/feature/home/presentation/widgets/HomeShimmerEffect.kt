@@ -23,7 +23,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import com.loc.newsapp.R
-import com.loc.newsapp.feature.onBoarding.presentation.Dimens.MediumPadding1
+import com.loc.newsapp.core.constant.Dimens.MediumPadding1
 import com.loc.newsapp.core.util.Dimension
 
 fun Modifier.shimmerEffect() = composed {
