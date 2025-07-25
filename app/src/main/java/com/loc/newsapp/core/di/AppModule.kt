@@ -17,6 +17,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 import com.loc.newsapp.core.util.Constants.BASE_URL
+import com.loc.newsapp.feature.demo.data.data_source.DemoApiService
+import com.loc.newsapp.feature.demo.data.repository.DemoRepositoryImpl
+import com.loc.newsapp.feature.demo.domain.repository.DemoRepository
+import com.loc.newsapp.feature.demo.domain.usecases.DemoUseCases
+import com.loc.newsapp.feature.demo.domain.usecases.SendDemoDataUseCase
 import com.loc.newsapp.feature.home.domain.usecases.NewsUseCases
 import retrofit2.Retrofit
 
@@ -67,5 +72,31 @@ object AppModule {
             //searchNews = SearchNews(newsRepository)
         )
     }
+
+
+    @Provides
+    @Singleton
+    fun provideDemoApi(): DemoApiService {
+        return Retrofit.Builder()
+            .baseUrl("https://atb-jobs.com:8000/api/v1/app/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(DemoApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDemoRepository(
+        demoApi: DemoApiService
+    ): DemoRepository = DemoRepositoryImpl(demoApi)
+
+    @Provides
+    @Singleton
+    fun provideDemoUseCases(
+        demoRepository: DemoRepository
+    ): DemoUseCases = DemoUseCases(
+        sendDemoData = SendDemoDataUseCase(demoRepository)
+    )
+
 
 }
