@@ -27,6 +27,8 @@ import com.loc.newsapp.R
 import com.loc.newsapp.feature.home.domain.entities.Article
 import com.loc.newsapp.feature.home.presentation.widgets.ArticlesList
 import com.loc.newsapp.feature.home.presentation.widgets.SearchBar
+import androidx.compose.material3.Button
+import com.loc.newsapp.config.navgraph.Route
 //if(articles.isEmpty()){
 //    CircularProgressIndicator()
 //}else {
@@ -63,6 +65,18 @@ fun HomeScreen(articles: LazyPagingItems<Article>, navigate:(String) -> Unit) {
         )
 
         Spacer(modifier = Modifier.height(MediumPadding1))
+
+        Button(
+            onClick = {
+                //Log.d("HomeScreen", "Button clicked")
+                navigate(Route.DemoScreen.route)
+            },
+            modifier = Modifier
+                .padding(top = 16.dp)
+                .fillMaxWidth()
+        ) {
+            Text("Submit")
+        }
 
         SearchBar(
             modifier = Modifier
