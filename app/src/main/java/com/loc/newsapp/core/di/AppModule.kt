@@ -24,6 +24,11 @@ import com.loc.newsapp.feature.demo.domain.usecases.DemoUseCases
 import com.loc.newsapp.feature.demo.domain.usecases.SendDemoDataUseCase
 import com.loc.newsapp.feature.home.domain.usecases.NewsUseCases
 import retrofit2.Retrofit
+import com.loc.newsapp.feature.product.data.data_source.ProductApiService
+import com.loc.newsapp.feature.product.data.repository.ProductRepositoryImpl
+import com.loc.newsapp.feature.product.domain.repository.ProductRepository
+import com.loc.newsapp.feature.product.domain.usecases.ProductUseCases
+import com.loc.newsapp.feature.product.domain.usecases.ProductUseCasesCall
 
 
 @Module
@@ -98,5 +103,28 @@ object AppModule {
         sendDemoData = SendDemoDataUseCase(demoRepository)
     )
 
+    @Provides
+    @Singleton
+    fun provideProductApi(): ProductApiService {
+        return Retrofit.Builder()
+            .baseUrl("https://fakestoreapi.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(ProductApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideProductRepository(
+        productApi: ProductApiService
+    ): ProductRepository = ProductRepositoryImpl(productApi)
+
+    @Provides
+    @Singleton
+    fun provideProductUseCases(
+        productRepository: ProductRepository
+    ): ProductUseCasesCall = ProductUseCasesCall(
+        sendProductData = ProductUseCases(productRepository)
+    )
 
 }
