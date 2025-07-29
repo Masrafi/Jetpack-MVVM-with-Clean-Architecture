@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.loc.newsapp.config.navgraph.Route
 import com.loc.newsapp.feature.demo.presentation.view_model.DemoUiState
 import com.loc.newsapp.feature.demo.presentation.view_model.DemoViewModel
 
@@ -19,7 +20,18 @@ fun DemoScreen(viewModel: DemoViewModel = hiltViewModel(), navigate:(String) -> 
     ) {
         when (state) {
             is DemoUiState.Idle -> {
-                Button(onClick = {  viewModel.sendDemoData() }) {
+                Button(
+                    onClick = {
+                        //Log.d("HomeScreen", "Button clicked")
+                        navigate(Route.ProductScreen.route)
+                    },
+                    modifier = Modifier
+                        .padding(top = 16.dp)
+                        .fillMaxWidth()
+                ) {
+                    Text("Submit")
+                }
+                Button(onClick = {  viewModel.sendDemoData() }) { ///
                     Text("Send Demo Data")
                 }
             }

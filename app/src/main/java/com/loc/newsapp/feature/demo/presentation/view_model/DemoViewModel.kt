@@ -17,7 +17,7 @@ class DemoViewModel @Inject constructor(
     private val _demoResponse = MutableStateFlow<DemoUiState>(DemoUiState.Idle)
     val demoResponse: StateFlow<DemoUiState> = _demoResponse
 
-    fun sendDemoData() {
+    fun sendDemoData() {   /// This method will call in the button. Like event
         viewModelScope.launch {
             _demoResponse.value = DemoUiState.Loading
             try {

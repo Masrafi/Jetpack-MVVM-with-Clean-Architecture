@@ -20,5 +20,6 @@ sealed class Route(
 
     object NewsNavigation : Route(route = "newsNavigation")
     object DemoScreen : Route(route = "demoScreen")
+    object ProductScreen : Route(route = "productScreen")
 
 }

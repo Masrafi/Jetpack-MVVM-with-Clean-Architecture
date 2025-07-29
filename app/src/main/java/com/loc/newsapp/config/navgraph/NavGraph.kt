@@ -13,6 +13,8 @@ import com.loc.newsapp.feature.home.presentation.viewmodel.HomeViewModel
 import com.loc.newsapp.feature.onBoarding.presentation.onboadrding.OnBoardingScreen
 import com.loc.newsapp.feature.onBoarding.presentation.onboadrding.OnBoardingViewModel
 import com.loc.newsapp.feature.demo.presentation.screens.DemoScreen
+import com.loc.newsapp.feature.product.presentation.viewmodel.ProductViewModel
+import com.loc.newsapp.feature.product.presentation.screens.ProductScreen
 
 @Composable
 fun NavGraph(
@@ -48,8 +50,14 @@ fun NavGraph(
             }
             composable(route = Route.DemoScreen.route) {
                 val viewModel: DemoViewModel = hiltViewModel()
-                print("...................................")
-                DemoScreen(viewModel = viewModel, navigate = {})
+                DemoScreen(viewModel = viewModel, navigate = { route ->
+                    navController.navigate(route)
+                })
+            }            
+            
+            composable(route = Route.ProductScreen.route) {
+                val viewModel: ProductViewModel = hiltViewModel()
+                ProductScreen(viewModel = viewModel, navigate = {})
             }
 
         }
